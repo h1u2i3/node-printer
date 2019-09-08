@@ -2,7 +2,7 @@
 
 #include <node_buffer.h>
 
-void initNode(v8::Handle<v8::Object> exports) {
+void initNode(v8::Local<v8::Object> exports) {
 // only for node
   NODE_SET_METHOD(exports, "getPrinters", getPrinters);
   NODE_SET_METHOD(exports, "getDefaultPrinterName", getDefaultPrinterName);
@@ -20,7 +20,7 @@ NODE_MODULE(node_printer, initNode);
 
 // Helpers
 
-bool getStringOrBufferFromV8Value(v8::Handle<v8::Value> iV8Value, std::string &oData)
+bool getStringOrBufferFromV8Value(v8::Local<v8::Value> iV8Value, std::string &oData)
 {
     if(iV8Value->IsString())
     {
