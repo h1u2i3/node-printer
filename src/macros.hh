@@ -11,7 +11,7 @@
 #  define MY_NODE_MODULE_ISOLATE      isolate
 #  define MY_NODE_MODULE_ISOLATE_PRE  isolate,
 #  define MY_NODE_MODULE_ISOLATE_POST , isolate
-#  define MY_NODE_MODULE_HANDLESCOPE MY_NODE_MODULE_ISOLATE_DECL v8::LocalScope scope(MY_NODE_MODULE_ISOLATE)
+#  define MY_NODE_MODULE_HANDLESCOPE MY_NODE_MODULE_ISOLATE_DECL v8::HandleScope scope(MY_NODE_MODULE_ISOLATE)
 #  define MY_NODE_MODULE_CALLBACK(name) void name(const v8::FunctionCallbackInfo<v8::Value>& iArgs)
 #  define V8_VALUE_NEW(type, value)   v8::type::New(MY_NODE_MODULE_ISOLATE_PRE value)
 #  define V8_VALUE_NEW_DEFAULT(type)   v8::type::New(MY_NODE_MODULE_ISOLATE)
@@ -30,7 +30,7 @@
 #  define MY_NODE_MODULE_ISOLATE
 #  define MY_NODE_MODULE_ISOLATE_PRE
 #  define MY_NODE_MODULE_ISOLATE_POST
-#  define MY_NODE_MODULE_HANDLESCOPE v8::LocalScope scope;
+#  define MY_NODE_MODULE_HANDLESCOPE v8::HandleScope scope;
 #  define MY_NODE_MODULE_CALLBACK(name) v8::Local<v8::Value> name(const v8::Arguments& iArgs)
 #  define V8_VALUE_NEW(type, value)   v8::type::New(value)
 #  define V8_VALUE_NEW_DEFAULT(type)   v8::type::New()
